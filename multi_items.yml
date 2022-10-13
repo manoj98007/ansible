@@ -1,0 +1,17 @@
+---
+ - name: Playbook to Install Multi items
+   hosts: all
+   tasks:
+     - name: Install git
+       become: true
+       apt:
+         name: "{{ item }}"
+         state: absent
+         update_cache: yes
+       with_items:
+            - git
+            - nginx
+            - memcached
+            - jq
+            - curl
+            - wget    
